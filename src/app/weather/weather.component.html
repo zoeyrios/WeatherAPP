@@ -1,0 +1,191 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3 class="text-center my-4">Búsqueda de ciudad:</h3>
+      <form  
+      [formGroup]="weatherSearchForm"(ngSubmit)="sendToAPIXU(weatherSearchForm.value)" >
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="text"
+              id="weatherLocation"
+              aria-describedby="weatherLocation"
+              placeholder="Por favor ingrese una ciudad"
+              formControlName="location"/>
+           </div>
+           <div class="text-center"> 
+            <button type="submit" class="btn btn-success btn-md">
+                Buscar ciudad</button>
+           </div>
+         </form> 
+    </div>
+    <div class="col-md-6">
+      <h3 class="text-center my-4">Detalles del tiempo:</h3>
+      <img src="{{this.weatherData?.current.condition.icon}}" class="center">
+      <p class="text-center">Condiciones climáticas actuales: {{this.weatherData?.current.condition.text}} </p>
+      <p class="text-center">Temperatura en grados Celsius: {{this.weatherData?.current.temp_c}} </p>
+      <p class="text-center">Temperatura en grados Farenheit: {{this.weatherData?.current.temp_f}} </p>
+      <p class="text-center">Como se siente en grados Celsius: {{this.weatherData?.current.feelslike_c}} </p>
+      <p class="text-center">Como se siente en grados Farenheit: {{this.weatherData?.current.feelslike_f}} </p>
+      <p class="text-center">Ubicación Buscada: {{this.weatherData?.location.name}},
+          {{this.weatherData?.location.country}} </p>
+    </div>
+  </div>
+  <h3 class="text-center ">Pronostico</h3>
+  <div class="row">
+      <div class="col-sm-6">
+          <div class="card">
+              <div class="card-body">
+          <img src="{{this.weatherData?.forecast.forecastday['0'].day.condition.icon}}" class="center">
+          <p class="text-center">Fecha: {{this.weatherData?.forecast.forecastday["0"].date}} </p>
+          <p class="text-center">Condiciones climáticas: {{this.weatherData?.forecast.forecastday["0"].day.condition.text}} </p>
+          <p class="text-center">Humedad: {{this.weatherData?.forecast.forecastday["0"].day.avghumidity}}% </p>
+          <p class="text-center">Salida de la Luna: {{this.weatherData?.forecast.forecastday["0"].astro.moonrise}} </p>
+          <p class="text-center">Puesta de la Luna: {{this.weatherData?.forecast.forecastday["0"].astro.moonset}} </p>
+          <p class="text-center">Amanecer: {{this.weatherData?.forecast.forecastday["0"].astro.sunrise}} </p>
+          <p class="text-center">Puesta del Sol: {{this.weatherData?.forecast.forecastday["0"].astro.sunset}} </p>
+          <p class="text-center">Temperatura Maxima en celsius: {{this.weatherData?.forecast.forecastday["0"].day.maxtemp_c}} </p>
+          <p class="text-center">Temperatura Minima en celsius: {{this.weatherData?.forecast.forecastday["0"].day.mintemp_c}} </p>
+          <p class="text-center">Temperatura Maxima en Farenheit: {{this.weatherData?.forecast.forecastday["0"].day.maxtemp_f}} </p>
+          <p class="text-center">Temperatura Minima en Farenheit: {{this.weatherData?.forecast.forecastday["0"].day.mintemp_f}} </p>
+          <p class="text-center">Viento máximo: a {{this.weatherData?.forecast.forecastday["0"].day.maxwind_kph}}Km/h y {{this.weatherData?.forecast.forecastday["0"].day.maxwind_mph}}Mph</p>
+          <p class="text-center">Ubicación Buscada: {{this.weatherData?.location.name}},
+              {{this.weatherData?.location.country}} </p>
+            </div> 
+         </div>      
+      </div>
+      <div class="col-sm-6" >
+          <div class="card">
+              <div class="card-body">
+          <img src="{{this.weatherData?.forecast.forecastday['1'].day.condition.icon}}" class="center">
+          <p class="text-center">Fecha: {{this.weatherData?.forecast.forecastday["1"].date}} </p>
+          <p class="text-center">Condiciones climáticas: {{this.weatherData?.forecast.forecastday["1"].day.condition.text}} </p>
+          <p class="text-center">Humedad: {{this.weatherData?.forecast.forecastday["1"].day.avghumidity}}% </p>
+          <p class="text-center">Salida de la Luna: {{this.weatherData?.forecast.forecastday["1"].astro.moonrise}} </p>
+          <p class="text-center">Puesta de la Luna: {{this.weatherData?.forecast.forecastday["1"].astro.moonset}} </p>
+          <p class="text-center">Amanecer: {{this.weatherData?.forecast.forecastday["1"].astro.sunrise}} </p>
+          <p class="text-center">Puesta del Sol: {{this.weatherData?.forecast.forecastday["1"].astro.sunset}} </p>
+          <p class="text-center">Temperatura Maxima en celsius: {{this.weatherData?.forecast.forecastday["1"].day.maxtemp_c}} </p>
+          <p class="text-center">Temperatura Minima en celsius: {{this.weatherData?.forecast.forecastday["1"].day.mintemp_c}} </p>
+          <p class="text-center">Temperatura Maxima en Farenheit: {{this.weatherData?.forecast.forecastday["1"].day.maxtemp_f}} </p>
+          <p class="text-center">Temperatura Minima en Farenheit: {{this.weatherData?.forecast.forecastday["1"].day.mintemp_f}} </p>
+          <p class="text-center">Viento máximo: a {{this.weatherData?.forecast.forecastday["1"].day.maxwind_kph}}Km/h y {{this.weatherData?.forecast.forecastday["1"].day.maxwind_mph}}Mph</p>
+          <p class="text-center">Ubicación Buscada: {{this.weatherData?.location.name}},
+              {{this.weatherData?.location.country}} </p>
+            </div> 
+          </div> 
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-sm-6" >
+            <div class="card">
+                <div class="card-body">
+          <img src="{{this.weatherData?.forecast.forecastday['2'].day.condition.icon}}" class="center">
+          <p class="text-center">Fecha: {{this.weatherData?.forecast.forecastday["2"].date}} </p>
+          <p class="text-center">Condiciones climáticas: {{this.weatherData?.forecast.forecastday["2"].day.condition.text}} </p>
+          <p class="text-center">Humedad: {{this.weatherData?.forecast.forecastday["2"].day.avghumidity}}% </p>
+          <p class="text-center">Salida de la Luna: {{this.weatherData?.forecast.forecastday["2"].astro.moonrise}} </p>
+          <p class="text-center">Puesta de la Luna: {{this.weatherData?.forecast.forecastday["2"].astro.moonset}} </p>
+          <p class="text-center">Amanecer: {{this.weatherData?.forecast.forecastday["2"].astro.sunrise}} </p>
+          <p class="text-center">Puesta del Sol: {{this.weatherData?.forecast.forecastday["2"].astro.sunset}} </p>
+          <p class="text-center">Temperatura Maxima en celsius: {{this.weatherData?.forecast.forecastday["2"].day.maxtemp_c}} </p>
+          <p class="text-center">Temperatura Minima en celsius: {{this.weatherData?.forecast.forecastday["2"].day.mintemp_c}} </p>
+          <p class="text-center">Temperatura Maxima en Farenheit: {{this.weatherData?.forecast.forecastday["2"].day.maxtemp_f}} </p>
+          <p class="text-center">Temperatura Minima en Farenheit: {{this.weatherData?.forecast.forecastday["2"].day.mintemp_f}} </p>
+          <p class="text-center">Viento máximo: a {{this.weatherData?.forecast.forecastday["2"].day.maxwind_kph}}Km/h y {{this.weatherData?.forecast.forecastday["2"].day.maxwind_mph}}Mph</p>
+          <p class="text-center">Ubicación Buscada: {{this.weatherData?.location.name}},
+              {{this.weatherData?.location.country}} </p>
+            </div> 
+          </div> 
+        </div>
+      <div class="col-sm-6">
+          <div class="card">
+              <div class="card-body">
+        <img src="{{this.weatherData?.forecast.forecastday['3'].day.condition.icon}}" class="center">
+          <p class="text-center">Fecha: {{this.weatherData?.forecast.forecastday["3"].date}} </p>
+          <p class="text-center">Condiciones climáticas: {{this.weatherData?.forecast.forecastday["3"].day.condition.text}} </p>
+          <p class="text-center">Humedad: {{this.weatherData?.forecast.forecastday["3"].day.avghumidity}}% </p>
+          <p class="text-center">Salida de la Luna: {{this.weatherData?.forecast.forecastday["3"].astro.moonrise}} </p>
+          <p class="text-center">Puesta de la Luna: {{this.weatherData?.forecast.forecastday["3"].astro.moonset}} </p>
+          <p class="text-center">Amanecer: {{this.weatherData?.forecast.forecastday["3"].astro.sunrise}} </p>
+          <p class="text-center">Puesta del Sol: {{this.weatherData?.forecast.forecastday["3"].astro.sunset}} </p>
+          <p class="text-center">Temperatura Maxima en celsius: {{this.weatherData?.forecast.forecastday["3"].day.maxtemp_c}} </p>
+          <p class="text-center">Temperatura Minima en celsius: {{this.weatherData?.forecast.forecastday["3"].day.mintemp_c}} </p>
+          <p class="text-center">Temperatura Maxima en Farenheit: {{this.weatherData?.forecast.forecastday["3"].day.maxtemp_f}} </p>
+          <p class="text-center">Temperatura Minima en Farenheit: {{this.weatherData?.forecast.forecastday["3"].day.mintemp_f}} </p>
+          <p class="text-center">Viento máximo: a {{this.weatherData?.forecast.forecastday["3"].day.maxwind_kph}}Km/h y {{this.weatherData?.forecast.forecastday["3"].day.maxwind_mph}}Mph</p>
+          <p class="text-center">Ubicación Buscada: {{this.weatherData?.location.name}},
+              {{this.weatherData?.location.country}} </p>
+            </div> 
+          </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+          <img src="{{this.weatherData?.forecast.forecastday['4'].day.condition.icon}}" class="center">
+          <p class="text-center">Fecha: {{this.weatherData?.forecast.forecastday["4"].date}} </p>
+          <p class="text-center">Condiciones climáticas: {{this.weatherData?.forecast.forecastday["4"].day.condition.text}} </p>
+          <p class="text-center">Humedad: {{this.weatherData?.forecast.forecastday["4"].day.avghumidity}}% </p>
+          <p class="text-center">Salida de la Luna: {{this.weatherData?.forecast.forecastday["4"].astro.moonrise}} </p>
+          <p class="text-center">Puesta de la Luna: {{this.weatherData?.forecast.forecastday["4"].astro.moonset}} </p>
+          <p class="text-center">Amanecer: {{this.weatherData?.forecast.forecastday["4"].astro.sunrise}} </p>
+          <p class="text-center">Puesta del Sol: {{this.weatherData?.forecast.forecastday["4"].astro.sunset}} </p>
+          <p class="text-center">Temperatura Maxima en celsius: {{this.weatherData?.forecast.forecastday["4"].day.maxtemp_c}} </p>
+          <p class="text-center">Temperatura Minima en celsius: {{this.weatherData?.forecast.forecastday["4"].day.mintemp_c}} </p>
+          <p class="text-center">Temperatura Maxima en Farenheit: {{this.weatherData?.forecast.forecastday["4"].day.maxtemp_f}} </p>
+          <p class="text-center">Temperatura Minima en Farenheit: {{this.weatherData?.forecast.forecastday["4"].day.mintemp_f}} </p>
+          <p class="text-center">Viento máximo: a {{this.weatherData?.forecast.forecastday["4"].day.maxwind_kph}}Km/h y {{this.weatherData?.forecast.forecastday["4"].day.maxwind_mph}}Mph</p>
+          <p class="text-center">Ubicación Buscada: {{this.weatherData?.location.name}},
+              {{this.weatherData?.location.country}} </p>
+            </div> 
+          </div>
+      </div>
+      <div class="col-sm-6">
+          <div class="card">
+              <div class="card-body">
+          <img src="{{this.weatherData?.forecast.forecastday['5'].day.condition.icon}}" class="center">
+          <p class="text-center">Fecha: {{this.weatherData?.forecast.forecastday["5"].date}} </p>
+          <p class="text-center">Condiciones climáticas: {{this.weatherData?.forecast.forecastday["5"].day.condition.text}} </p>
+          <p class="text-center">Humedad: {{this.weatherData?.forecast.forecastday["5"].day.avghumidity}}% </p>
+          <p class="text-center">Salida de la Luna: {{this.weatherData?.forecast.forecastday["5"].astro.moonrise}} </p>
+          <p class="text-center">Puesta de la Luna: {{this.weatherData?.forecast.forecastday["5"].astro.moonset}} </p>
+          <p class="text-center">Amanecer: {{this.weatherData?.forecast.forecastday["5"].astro.sunrise}} </p>
+          <p class="text-center">Puesta del Sol: {{this.weatherData?.forecast.forecastday["5"].astro.sunset}} </p>
+          <p class="text-center">Temperatura Maxima en celsius: {{this.weatherData?.forecast.forecastday["5"].day.maxtemp_c}} </p>
+          <p class="text-center">Temperatura Minima en celsius: {{this.weatherData?.forecast.forecastday["5"].day.mintemp_c}} </p>
+          <p class="text-center">Temperatura Maxima en Farenheit: {{this.weatherData?.forecast.forecastday["5"].day.maxtemp_f}} </p>
+          <p class="text-center">Temperatura Minima en Farenheit: {{this.weatherData?.forecast.forecastday["5"].day.mintemp_f}} </p>
+          <p class="text-center">Viento máximo: a {{this.weatherData?.forecast.forecastday["5"].day.maxwind_kph}}Km/h y {{this.weatherData?.forecast.forecastday["5"].day.maxwind_mph}}Mph</p>
+          <p class="text-center">Ubicación Buscada: {{this.weatherData?.location.name}},
+              {{this.weatherData?.location.country}} </p>
+            </div> 
+          </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+          <img src="{{this.weatherData?.forecast.forecastday['6'].day.condition.icon}}" class="center">
+          <p class="text-center">Fecha: {{this.weatherData?.forecast.forecastday["6"].date}} </p>
+          <p class="text-center">Condiciones climáticas: {{this.weatherData?.forecast.forecastday["6"].day.condition.text}} </p>
+          <p class="text-center">Humedad: {{this.weatherData?.forecast.forecastday["6"].day.avghumidity}}% </p>
+          <p class="text-center">Salida de la Luna: {{this.weatherData?.forecast.forecastday["6"].astro.moonrise}} </p>
+          <p class="text-center">Puesta de la Luna: {{this.weatherData?.forecast.forecastday["6"].astro.moonset}} </p>
+          <p class="text-center">Amanecer: {{this.weatherData?.forecast.forecastday["6"].astro.sunrise}} </p>
+          <p class="text-center">Puesta del Sol: {{this.weatherData?.forecast.forecastday["6"].astro.sunset}} </p>
+          <p class="text-center">Temperatura Maxima en celsius: {{this.weatherData?.forecast.forecastday["6"].day.maxtemp_c}} </p>
+          <p class="text-center">Temperatura Minima en celsius: {{this.weatherData?.forecast.forecastday["6"].day.mintemp_c}} </p>
+          <p class="text-center">Temperatura Maxima en Farenheit: {{this.weatherData?.forecast.forecastday["6"].day.maxtemp_f}} </p>
+          <p class="text-center">Temperatura Minima en Farenheit: {{this.weatherData?.forecast.forecastday["6"].day.mintemp_f}} </p>
+          <p class="text-center">Viento máximo: a {{this.weatherData?.forecast.forecastday["6"].day.maxwind_kph}}Km/h y {{this.weatherData?.forecast.forecastday["6"].day.maxwind_mph}}Mph</p>
+          <p class="text-center">Ubicación Buscada: {{this.weatherData?.location.name}},
+              {{this.weatherData?.location.country}} </p>
+            </div> 
+          </div>
+      </div>
+         </div>
+  
+</div>
